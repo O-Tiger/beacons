@@ -2,7 +2,7 @@
 {% macro link(icon, title, sub, href=None, primary=False, copy=None) -%}
 {%- set cls = 'btn pri' if primary else 'btn' -%}
 {% if copy %}
-<button type="button" class="{{ cls }}" data-copy="{{ copy }}">{{ ICONS[icon] }}<span class="t"><b>{{ title }}</b><small>{{ sub }}</small></span><span class="go">Copiar</span></button>
+<!--email_off--><button type="button" class="{{ cls }}" data-copy="{{ copy }}">{{ ICONS[icon] }}<span class="t"><b>{{ title }}</b><small>{{ sub }}</small></span><span class="go">Copiar</span></button><!--/email_off-->
 {% else %}
 <a class="{{ cls }}" href="{{ href }}" target="_blank" rel="noopener">{{ ICONS[icon] }}<span class="t"><b>{{ title }}</b><small>{{ sub }}</small></span><span class="go">Abrir ↗</span></a>
 {% endif %}
