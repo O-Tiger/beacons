@@ -51,3 +51,12 @@ footer a{color:var(--acc2);text-decoration:none}
 @media(prefers-reduced-motion:no-preference){.mark .spin{transform-origin:42px 42px;animation:sp 12s linear infinite}@keyframes sp{to{transform:rotate(360deg)}}}
 @media(prefers-reduced-motion:no-preference){#view.in{animation:fadein .22s ease}@keyframes fadein{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}}
 #view{display:flex;flex-direction:column;gap:14px}
+
+dl.cmds dt{text-transform:none;letter-spacing:.3px;font:700 14px ui-monospace,monospace}
+.faq{display:flex;flex-direction:column}
+.faq details{border-top:1px solid var(--line);padding:11px 0}.faq details:first-child{border-top:0}
+.faq summary{cursor:pointer;font-weight:600;list-style:none;display:flex;gap:10px;justify-content:space-between;align-items:baseline}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--acc2);font:700 18px var(--display);flex:none}
+.faq details[open] summary::after{content:"–"}
+.faq p{margin:8px 0 0;color:var(--mut);line-height:1.5}

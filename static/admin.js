@@ -110,7 +110,12 @@
           el('div', { class: 'f' }, el('span', {}, 'Dias de folga'), checks, el('small', {}, 'Marcados = sem live. O cálculo de "próxima live" usa isso.')))];
     },
     contatos: function () { return [card('Cabeçalho', common('contatos'))]; },
-    etc: function () { return [card('Cabeçalho', common('etc'))]; },
+    etc: function () {
+      return [card('Cabeçalho', common('etc')),
+        card('Regras do chat', list('Regras', ['pages', 'etc', 'rules'], [{ ph: 'Regra', area: true }], 'Deixe vazio para esconder este cartão no site. ' + HTML_HINT)),
+        card('Comandos', list('Comandos', ['pages', 'etc', 'commands'], [{ ph: '!comando' }, { ph: 'O que faz', area: true }], 'Deixe vazio para esconder este cartão no site.')),
+        card('Perguntas frequentes', list('Perguntas', ['pages', 'etc', 'faq'], [{ ph: 'Pergunta' }, { ph: 'Resposta', area: true }], 'Deixe vazio para esconder este cartão no site. ' + HTML_HINT))];
+    },
     json: function () {
       var ta = el('textarea', { class: 'json', spellcheck: 'false', oninput: function () { dirty = true; setStatus('Alterações não salvas (JSON)', ''); } });
       ta.value = JSON.stringify(data, null, 2); ta.id = 'rawjson';

@@ -84,6 +84,21 @@ def validate(data):
     for row in out["pages"]["setup"]["specs"]:
         if not (isinstance(row, list) and len(row) == 2 and all(isinstance(x, str) for x in row)):
             raise ValueError("Cada item do Setup precisa ter nome e valor")
+    # descarta linhas em branco (clique em "+ Adicionar" sem preencher)
+    pg = out["pages"]
+    for lst in (pg["sobre"], pg["etc"]):
+        for key in ("bullets", "rules"):
+            if key in lst and isinstance(lst[key], list):
+                lst[key] = [x for x in lst[key] if not (isinstance(x, str) and not x.strip())]
+    for lst, key in ((pg["setup"], "specs"), (pg["etc"], "commands"), (pg["etc"], "faq")):
+        if isinstance(lst[key], list):
+            lst[key] = [r for r in lst[key] if not (isinstance(r, list) and all(isinstance(x, str) and not x.strip() for x in r))]
+    e = out["pages"]["etc"]
+    if not (isinstance(e["rules"], list) and all(isinstance(r, str) and len(r) <= 1000 for r in e["rules"])):
+        raise ValueError("Cada regra precisa ser um texto curto")
+    for key, nome in (("commands", "comando"), ("faq", "pergunta")):
+        if not (isinstance(e[key], list) and all(isinstance(r, list) and len(r) == 2 and all(isinstance(x, str) for x in r) for r in e[key])):
+            raise ValueError(f"Cada {nome} precisa ter dois campos de texto")
     h = out["pages"]["horarios"]
     if not 0 <= h["start_hour"] <= 23:
         raise ValueError("Hora de início precisa estar entre 0 e 23")
