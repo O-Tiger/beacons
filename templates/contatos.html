@@ -1,0 +1,13 @@
+{% extends "base.html" %}{% from "_macros.html" import link, card %}
+{% block content %}
+{% call card('Falar comigo') %}
+{{ link('mail', 'E-mail', EMAIL, primary=True, copy=EMAIL) }}
+{{ link('discord', 'Discord (servidor)', 'discord.gg/ZTkXjtxbxe', LINKS.discord) }}
+{{ link('discord', 'Discord (usuário)', DISCORD_USER, copy=DISCORD_USER) }}
+{% endcall %}
+{% call card('Perfis') %}
+{{ link('github', 'GitHub', 'github.com/O-Tiger', LINKS.github) }}
+{{ link('twitch', 'Twitch', 'twitch.tv/otigerjoga', LINKS.twitch) }}
+{{ link('globe', 'Nexus', 'nexusheim.com', LINKS.nexus) }}
+{% endcall %}
+{% endblock %}

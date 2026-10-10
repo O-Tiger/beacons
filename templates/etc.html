@@ -1,0 +1,11 @@
+{% extends "base.html" %}{% from "_macros.html" import link, card %}
+{% block content %}
+{% call card('Canal') %}
+{{ link('chart', 'TwitchTracker', 'Estatísticas públicas de otigerjoga', LINKS.tracker, primary=True) }}
+{{ link('twitch', 'Twitch', 'twitch.tv/otigerjoga', LINKS.twitch) }}
+{% endcall %}
+{% call card('Mais') %}
+{{ link('globe', 'Nexus', 'Site, loja, wiki e catálogo', LINKS.nexus) }}
+{{ link('github', 'GitHub', 'Código aberto', LINKS.github) }}
+{% endcall %}
+{% endblock %}

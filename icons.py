@@ -1,0 +1,14 @@
+"""SVGs inline usados nas páginas (ícones dos links e glifos do hexágono)."""
+GLYPHS={
+'tri':'<path d="M42 31L51 49H33Z M42 31V49" stroke="#c4b5fd" stroke-width="2" stroke-linejoin="round" fill="none"/>',
+'chip':'<path d="M34 34H50V50H34Z M38 30V34 M46 30V34 M38 50V54 M46 50V54 M30 38H34 M30 46H34 M50 38H54 M50 46H54" stroke="#c4b5fd" stroke-width="2" fill="none" stroke-linejoin="round"/><path d="M38 38H46V46H38Z" fill="#c4b5fd"/>',
+'clock':'<circle cx="42" cy="42" r="11" stroke="#c4b5fd" stroke-width="2" fill="none"/><path d="M42 42V34M42 42L48 45" stroke="#c4b5fd" stroke-width="2" stroke-linecap="round"/>',
+'signal':'<circle cx="35" cy="49" r="2.4" fill="#c4b5fd"/><path d="M35 41A8 8 0 0 1 43 49M35 33A16 16 0 0 1 51 49" stroke="#c4b5fd" stroke-width="2" stroke-linecap="round" fill="none"/>',
+'chart':'<path d="M31 53V32M31 53H53" stroke="#c4b5fd" stroke-width="2" stroke-linecap="round" fill="none"/><path d="M37 49V43M43 49V37M49 49V40" stroke="#c4b5fd" stroke-width="3.4" stroke-linecap="round"/>'}
+ICONS={
+'twitch':'<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M4 3h17v11l-4 4h-4l-3 3v-3H4z"/><path d="M12 8v4M16 8v4" stroke-linecap="round"/></svg>',
+'github':'<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4 1.2-4-2-6-2.5M15 21v-3.2c0-1 .1-1.600-.5-2.300 2.800-.3 5.500-1.400 5.500-6a4.700 4.700 0 0 0-1.300-3.300 4.400 4.400 0 0 0-.1-3.300s-1-.3-3.400 1.300a11.600 11.600 0 0 0-6.200 0C6.600 2.800 5.600 3.100 5.600 3.100a4.400 4.400 0 0 0-.1 3.300A4.700 4.700 0 0 0 4.200 9.700c0 4.600 2.700 5.700 5.500 6-.6.600-.6 1.200-.5 2.300V21"/></svg>',
+'discord':'<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7c-2 .5-3.500 1.200-4.500 2C2.300 12 2 15 2.500 18c1.500 1.200 3 1.800 4.500 2l1-2M16 7c2 .5 3.500 1.200 4.500 2 1.200 3 1.500 6 1 9-1.500 1.200-3 1.800-4.500 2l-1-2M8 7c2.600-.7 5.400-.7 8 0M7.500 17c3 1 6 1 9 0"/><circle cx="9" cy="12.500" r="1.200"/><circle cx="15" cy="12.500" r="1.200"/></svg>',
+'mail':'<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14"/><path d="M3 7l9 7 9-7"/></svg>',
+'globe':'<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg>',
+'chart':'<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 4v16h16M8 16v-4M12 16V8M16 16v-6"/></svg>'}

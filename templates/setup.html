@@ -1,0 +1,6 @@
+{% extends "base.html" %}{% from "_macros.html" import card %}
+{% block content %}
+{% call card('Especificações') %}
+<dl class="spec">{% for k, v in p.specs %}<div><dt>{{ k }}</dt><dd>{{ v|safe }}</dd></div>{% endfor %}</dl>
+{% endcall %}
+{% endblock %}

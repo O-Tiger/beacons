@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{ p.title }} · {{ SITE.name }}</title>
+<meta name="description" content="{{ p.desc }}">
+<meta name="theme-color" content="#0b0719">
+<meta property="og:title" content="{{ p.title }} · {{ SITE.name }}">
+<meta property="og:description" content="{{ p.desc }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='nexus.css') }}">
+<link rel="preload" href="{{ url_for('static', filename='fonts/chakra-petch-700.woff2') }}" as="font" type="font/woff2" crossorigin>
+</head>
+<body>
+<main class="col">
+  <nav class="tabs" aria-label="Páginas">
+    {%- for pg in PAGES %}
+    <a href="{{ pg.path }}"{% if pg.endpoint == current %} aria-current="page"{% endif %}>{{ pg.label }}</a>
+    {%- endfor %}
+  </nav>
+  <div id="view" class="in">
+    <header class="hero">
+      <div class="mark" aria-hidden="true"><svg viewBox="0 0 84 84" fill="none"><g class="spin"><circle cx="42" cy="42" r="38" stroke="currentColor" stroke-opacity=".45" stroke-dasharray="2 5"/><circle cx="42" cy="42" r="32" stroke="#c4b5fd" stroke-width="2" stroke-dasharray="46 16"/></g><path d="M42 20L61 31V53L42 64L23 53V31Z" stroke="currentColor" stroke-width="2" fill="currentColor" fill-opacity=".16"/>{{ GLYPHS[p.glyph] }}</svg></div>
+      <span class="tag">{{ p.tag }}</span>
+      <h1>{{ p.title }}</h1>
+      <p class="lede">{{ p.lede }}</p>
+    </header>
+    {% block content %}{% endblock %}
+  </div>
+  <footer>{{ SITE.name }} · <a href="{{ SITE.main_site }}" target="_blank" rel="noopener">nexusheim.com</a></footer>
+</main>
+<div class="toast" id="toast" role="status"></div>
+<script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</body>
+</html>

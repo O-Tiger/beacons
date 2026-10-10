@@ -1,0 +1,19 @@
+{% extends "base.html" %}{% from "_macros.html" import link, card %}
+{% block content %}
+<section class="card" id="sched" data-start="{{ p.start_hour }}" data-off="{{ p.off_days|join(',') }}" aria-live="polite">
+  <h2>Próxima live prevista</h2>
+  <div class="next"><b id="nx">–</b><small id="nxs">Calculado pelo horário de Brasília</small></div>
+</section>
+{% call card('Semana') %}
+<div class="week">
+  {%- for name, d in p.week %}{% set on = d not in p.off_days %}
+  <div class="day{{ '' if on else ' off' }}" data-d="{{ d }}"><span>{{ name }}</span><span>{{ (p.start_hour ~ "h →") if on else "folga" }}</span></div>
+  {%- endfor %}
+</div>
+<p class="note">Os horários podem mudar sem aviso. Avisos ficam na Twitch e no Discord.</p>
+{% endcall %}
+{% call card('Acompanhe') %}
+{{ link('twitch', 'Twitch', 'twitch.tv/otigerjoga', LINKS.twitch, primary=True) }}
+{{ link('discord', 'Discord', 'Avisos e comunidade', LINKS.discord) }}
+{% endcall %}
+{% endblock %}
