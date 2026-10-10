@@ -23,3 +23,18 @@ python build.py              # gera dist/ com a mesma saída do Flask
 ```
 Suba `dist/` no Cloudflare Pages, GitHub Pages ou Netlify e aponte o CNAME `beacons` para o serviço.
 Rotas: `/`, `/setup`, `/horarios`, `/contatos`, `/etc`.
+
+
+## Editar sem novo deploy (painel /admin)
+
+O conteúdo de `content.py` é o **padrão**. As edições feitas em `/admin` ficam em `DATA_DIR/content.json` e valem por cima dele, na hora, sem deploy.
+
+Variáveis de ambiente (Railway → Variables):
+
+| Variável | Para quê |
+|---|---|
+| `ADMIN_PASSWORD` | Senha do painel. Sem ela, `/admin` fica desligado. |
+| `DATA_DIR` | Pasta onde as edições são gravadas. No Railway use `/data`. |
+| `SECRET_KEY` | (opcional) Chave da sessão. Se omitida, é derivada da senha. |
+
+Para as edições sobreviverem a novos deploys, crie um **Volume** no serviço (Railway → serviço → Volumes → mount path `/data`) e defina `DATA_DIR=/data`. Sem volume, o painel avisa e as edições somem no próximo deploy.

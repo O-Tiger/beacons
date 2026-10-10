@@ -13,7 +13,7 @@
 <p class="note">Os horários podem mudar sem aviso. Avisos ficam na Twitch e no Discord.</p>
 {% endcall %}
 {% call card('Acompanhe') %}
-{{ link('twitch', 'Twitch', 'twitch.tv/otigerjoga', LINKS.twitch, primary=True) }}
+{{ link('twitch', 'Twitch', LINKS.twitch|short, LINKS.twitch, primary=True) }}
 {{ link('discord', 'Discord', 'Avisos e comunidade', LINKS.discord) }}
 {% endcall %}
 {% endblock %}

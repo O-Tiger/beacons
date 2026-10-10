@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#0b0719">
+<title>Painel · Nexus Beacons</title>
+<link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
+<link rel="stylesheet" href="{{ url_for('static', filename='nexus.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+</head>
+<body>
+{% if mode == 'off' %}
+<main class="col narrow"><section class="card"><h2>Painel desligado</h2>
+<p class="note">Defina a variável <code>ADMIN_PASSWORD</code> no servidor (Railway → Variables) para ativar o painel.</p></section></main>
+{% elif mode == 'login' %}
+<main class="col narrow">
+  <header class="hero"><span class="tag">Nexus Beacons</span><h1>Painel</h1><p class="lede">Edite os textos do site sem precisar de novo deploy.</p></header>
+  <form class="card" method="post" action="/admin/login">
+    <h2>Entrar</h2>
+    <label class="f"><span>Senha</span><input type="password" name="password" autocomplete="current-password" autofocus required></label>
+    {% if error %}<p class="err">{{ error }}</p>{% endif %}
+    <button class="abtn pri" type="submit">Entrar</button>
+  </form>
+</main>
+{% else %}
+<div id="app" class="wrap">
+  <header class="top">
+    <div><span class="tag">Nexus Beacons</span><h1>Painel</h1></div>
+    <nav class="acts">
+      <a class="abtn" href="/" target="_blank" rel="noopener">Ver site ↗</a>
+      <a class="abtn" href="/admin/backup">Backup</a>
+      <button class="abtn" id="reset" type="button">Restaurar padrão</button>
+      <button class="abtn" id="logout" type="button">Sair</button>
+    </nav>
+  </header>
+  <div id="warn" class="warn" hidden></div>
+  <nav class="tabsa" id="tabs" aria-label="Seções"></nav>
+  <main id="panel" class="panel"></main>
+  <div class="savebar"><span id="status" role="status">Carregando…</span><button class="abtn pri" id="save" type="button">Salvar</button></div>
+</div>
+<script src="{{ url_for('static', filename='admin.js') }}"></script>
+{% endif %}
+</body>
+</html>

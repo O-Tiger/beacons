@@ -30,7 +30,7 @@
     </header>
     {% block content %}{% endblock %}
   </div>
-  <footer>{{ SITE.name }} · <a href="{{ SITE.main_site }}" target="_blank" rel="noopener">nexusheim.com</a></footer>
+  <footer>{{ SITE.name }} · <a href="{{ SITE.main_site }}" target="_blank" rel="noopener">{{ SITE.main_site|short }}</a></footer>
 </main>
 <div class="toast" id="toast" role="status"></div>
 <script src="{{ url_for('static', filename='app.js') }}" defer></script>

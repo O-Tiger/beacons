@@ -2,7 +2,7 @@
 {% block content %}
 {% call card('Canal') %}
 {{ link('chart', 'TwitchTracker', 'Estatísticas públicas de otigerjoga', LINKS.tracker, primary=True) }}
-{{ link('twitch', 'Twitch', 'twitch.tv/otigerjoga', LINKS.twitch) }}
+{{ link('twitch', 'Twitch', LINKS.twitch|short, LINKS.twitch) }}
 {% endcall %}
 {% call card('Mais') %}
 {{ link('globe', 'Nexus', 'Site, loja, wiki e catálogo', LINKS.nexus) }}
