@@ -42,7 +42,7 @@ SETUP = {
         ("Placa-mãe", "Gigabyte B550M Aorus Elite"),
         ("Fonte", "MSI MAG A650BN · 650&nbsp;W"),
         ("Processador", "AMD Ryzen 7 3700X"),
-        ("Memória", "Kingston Fury Beast DDR4 · 16&nbsp;GB<br>Viper X DDR4 · 16&nbsp;GB · 3200&nbsp;MHz"),
+        ("Memória", "Kingston Fury Beast DDR4 · 16&nbsp;GB · 3200&nbsp;MHz<br>Viper DDR4 · 16&nbsp;GB · 3200&nbsp;MHz"),
         ("Placa de vídeo", "AMD Radeon RX 7600 · 8&nbsp;GB"),
         ("SSD", "Kingston NV3 · 1&nbsp;TB"),
     ],
