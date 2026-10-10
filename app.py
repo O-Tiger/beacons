@@ -19,6 +19,11 @@ app.jinja_env.globals.update(
 def page(template, data):
     return render_template(template, p=data, current=template.split(".")[0])
 
+@app.route("/favicon.ico")
+def favicon():
+    return app.send_static_file("favicon.ico")
+
+
 @app.route("/")
 def sobre(): return page("sobre.html", C.SOBRE)
 
