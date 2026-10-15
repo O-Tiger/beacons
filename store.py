@@ -1,6 +1,6 @@
 """Armazenamento do conteúdo editável.
 
-Os valores de content.py são o PADRÃO. As edições feitas em /admin ficam em
+Os valores de content.py são o PADRÃO. As edições feitas no dash ficam em
 DATA_DIR/content.json e valem por cima do padrão, sem precisar de novo deploy.
 Em produção, aponte DATA_DIR para um volume persistente (ex.: /data no Railway).
 """

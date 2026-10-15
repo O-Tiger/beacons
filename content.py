@@ -67,7 +67,7 @@ ETC = {
     "title": "ETC.", "tag": "Estatísticas do canal", "glyph": "chart",
     "lede": "Números do canal e atalhos que não cabem nos outros painéis.",
     "desc": "Estatísticas do canal do Tiger e atalhos extras.",
-    # Listas vazias = o cartão não aparece. Preencha em /admin → ETC.
+    # Listas vazias = o cartão não aparece. Preencha no dash (Beacons → Content) → ETC.
     "rules": [],      # ["Respeito acima de tudo", ...]
     "commands": [],   # [["!discord", "Convite do servidor"], ...]
     "faq": [],        # [["Pergunta?", "Resposta."], ...]
