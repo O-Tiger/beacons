@@ -38,3 +38,10 @@ Variáveis de ambiente (Railway → Variables):
 | `SECRET_KEY` | (opcional) Chave da sessão. Se omitida, é derivada da senha. |
 
 Para as edições sobreviverem a novos deploys, crie um **Volume** no serviço (Railway → serviço → Volumes → mount path `/data`) e defina `DATA_DIR=/data`. Sem volume, o painel avisa e as edições somem no próximo deploy.
+
+## nexus-dash e editor de painéis
+
+- `/api/dash/*` (conteúdo, salvar, restaurar padrão, backup) é a API que o nexus-dash usa para editar o conteúdo. Fica
+  desligada (404) sem `DASH_API_TOKEN` e exige `Authorization: Bearer` com esse valor. O editor em si mora no dash (aba Beacons).
+- `/editor-paineis` é o editor de painéis da Twitch (roda 100% no navegador, sem dados no servidor, `noindex`).
+- Para as edições sobreviverem a deploys, o serviço precisa de um volume e `DATA_DIR` apontando para ele.
