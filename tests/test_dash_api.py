@@ -52,3 +52,8 @@ def test_public_pages_and_the_panel_editor(client):
     assert r.status_code == 200 and r.headers["X-Robots-Tag"] == "noindex, nofollow"
     assert "<script>" not in html and "/static/editor-paineis/editor.js" in html
     assert client.get("/static/editor-paineis/editor.js").status_code == 200
+
+
+def test_legacy_admin_is_gone(client):
+    for path in ("/admin", "/admin/", "/admin/data"):
+        assert client.get(path).status_code == 404

@@ -25,19 +25,18 @@ Suba `dist/` no Cloudflare Pages, GitHub Pages ou Netlify e aponte o CNAME `beac
 Rotas: `/`, `/setup`, `/horarios`, `/contatos`, `/etc`.
 
 
-## Editar sem novo deploy (painel /admin)
+## Editar sem novo deploy (pelo nexus-dash)
 
-O conteúdo de `content.py` é o **padrão**. As edições feitas em `/admin` ficam em `DATA_DIR/content.json` e valem por cima dele, na hora, sem deploy.
+O conteúdo de `content.py` é o **padrão**. As edições feitas no nexus-dash (Beacons → Content) ficam em `DATA_DIR/content.json` e valem por cima dele, na hora, sem deploy.
 
 Variáveis de ambiente (Railway → Variables):
 
 | Variável | Para quê |
 |---|---|
-| `ADMIN_PASSWORD` | Senha do painel. Sem ela, `/admin` fica desligado. |
+| `DASH_API_TOKEN` | Token da API que o nexus-dash usa. Sem ele, `/api/dash/*` fica desligado (404). |
 | `DATA_DIR` | Pasta onde as edições são gravadas. No Railway use `/data`. |
-| `SECRET_KEY` | (opcional) Chave da sessão. Se omitida, é derivada da senha. |
 
-Para as edições sobreviverem a novos deploys, crie um **Volume** no serviço (Railway → serviço → Volumes → mount path `/data`) e defina `DATA_DIR=/data`. Sem volume, o painel avisa e as edições somem no próximo deploy.
+Para as edições sobreviverem a novos deploys, crie um **Volume** no serviço (Railway → serviço → Volumes → mount path `/data`) e defina `DATA_DIR=/data`. Sem volume, as edições somem no próximo deploy.
 
 ## nexus-dash e editor de painéis
 
