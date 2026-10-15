@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="robots" content="noindex, nofollow"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Editor de Painéis Nexus</title>
+<link rel="stylesheet" href="/static/editor-paineis/editor.css"></head><body>
+<div class="wrap">
+ <header><h1>Editor de Painéis Nexus</h1><p class="sub">Edite texto, ícone, cor e barra. Baixe em PNG, JPEG ou GIF animado. O painel da Twitch só mostra imagem estática (PNG ou JPEG) e aceita até 1 MB.</p></header>
+ <div class="tabs" id="tabs" role="group" aria-label="Painéis"></div>
+ <div class="grid">
+  <section class="stage"><div class="ground"><div id="svgbox" style="width:100%;max-width:640px"></div></div>
+   <div class="meta"><span>Exporta em <b id="dim">640×240</b> px</span><span>Peso estimado <b id="kb">–</b></span><span>O Twitch reduz para 320 px de largura</span></div></section>
+  <section class="ctl">
+   <label for="tab">Etiqueta do topo<input type="text" id="tab" maxlength="14"></label>
+   <label for="ttl">Título<input type="text" id="ttl" maxlength="16"></label>
+   <label for="sub">Subtítulo<input type="text" id="sub" maxlength="30"></label>
+   <label for="gly">Ícone<select id="gly"></select></label>
+   <label for="seg">Barra de segmentos: <span id="segv"></span><input type="range" id="seg" min="0" max="10" step="1"></label>
+   <div><label style="margin-bottom:6px">Cor de destaque</label><div class="sw" id="sw"><div class="cpwrap"><button type="button" class="cpbtn" id="cpb" aria-haspopup="dialog" aria-expanded="false"><i id="cpi"></i><span id="cpt">#8B5CF6</span></button><div class="pop" id="pop" role="dialog" aria-label="Seletor de cor" hidden><div id="sv"><div id="svk"></div></div><input type="range" id="hue" min="0" max="360" step="1" aria-label="Matiz"><div class="hexrow"><span id="hexsw"></span><input type="text" id="hex" maxlength="7" spellcheck="false" aria-label="Código hex" placeholder="#8B5CF6"></div></div></div></div></div>
+   <div class="row"><label for="scale">Tamanho<select id="scale"><option value="2">640×240 (nítido)</option><option value="1">320×120 (original)</option><option value="3">960×360</option></select></label></div>
+   <label class="chk"><input type="checkbox" id="anim" checked> Animar a prévia</label>
+   <div class="btns"><div class="split"><button class="pri" id="dl">Baixar PNG</button><button class="car" id="car" aria-label="Escolher formato" aria-haspopup="menu" aria-expanded="false">▾</button><div class="menu" id="menu" role="menu" hidden><button role="menuitemradio" data-f="png" aria-checked="true">PNG <small>estático, com transparência</small></button><button role="menuitemradio" data-f="jpeg" aria-checked="false">JPEG <small>estático, fundo sólido</small></button><button role="menuitemradio" data-f="gif" aria-checked="false">GIF <small>animado</small></button></div></div><button class="sec" id="rs">Restaurar painel</button></div>
+   <div id="msg" role="status"></div>
+  </section>
+ </div>
+</div>
+<script src="/static/editor-paineis/editor.js" defer></script>
+</body></html>

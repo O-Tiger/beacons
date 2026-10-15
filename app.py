@@ -15,6 +15,7 @@ from werkzeug.middleware.proxy_fix import ProxyFix
 import content as C
 import store
 import admin
+import dash_api
 from icons import ICONS, GLYPHS
 
 app = Flask(__name__)
@@ -34,6 +35,7 @@ app.jinja_env.globals.update(
 )
 app.jinja_env.filters["short"] = lambda u: re.sub(r"^https?://(www\.)?", "", u or "").rstrip("/")
 app.register_blueprint(admin.bp)
+app.register_blueprint(dash_api.bp)
 
 
 @app.context_processor
@@ -65,6 +67,14 @@ def contatos(): return page("contatos.html", "contatos")
 
 @app.route("/etc")
 def etc(): return page("etc.html", "etc")
+
+@app.route("/editor-paineis")
+def editor_paineis():
+    """Standalone Twitch panel editor (everything runs in the browser); not indexed."""
+    with open(os.path.join(app.static_folder, "editor-paineis", "index.html"), encoding="utf-8") as fh:
+        resp = app.response_class(fh.read(), mimetype="text/html")
+    resp.headers["X-Robots-Tag"] = "noindex, nofollow"
+    return resp
 
 @app.route("/sobre")
 def sobre_alias(): return redirect("/", code=301)
