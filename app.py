@@ -15,6 +15,7 @@ from werkzeug.middleware.proxy_fix import ProxyFix
 import content as C
 import store
 import dash_api
+import i18n
 from icons import ICONS, GLYPHS
 
 app = Flask(__name__)
@@ -27,6 +28,7 @@ app.jinja_env.globals.update(
 )
 app.jinja_env.filters["short"] = lambda u: re.sub(r"^https?://(www\.)?", "", u or "").rstrip("/")
 app.register_blueprint(dash_api.bp)
+i18n.init_app(app)
 
 
 @app.context_processor
@@ -75,6 +77,7 @@ def cache(resp):
     # HTML sempre revalida (ETag): edições feitas no dash aparecem na hora e o 304 continua barato.
     if resp.mimetype == "text/html" and resp.status_code == 200:
         resp.headers["Cache-Control"] = "no-cache"
+        resp.headers["Vary"] = "Cookie"
         resp.set_etag(f"{store.version()}-{hashlib.md5(resp.get_data()).hexdigest()[:12]}")
         resp.make_conditional(request)
     return resp

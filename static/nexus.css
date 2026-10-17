@@ -60,3 +60,12 @@ dl.cmds dt{text-transform:none;letter-spacing:.3px;font:700 14px ui-monospace,mo
 .faq summary::after{content:"+";color:var(--acc2);font:700 18px var(--display);flex:none}
 .faq details[open] summary::after{content:"–"}
 .faq p{margin:8px 0 0;color:var(--mut);line-height:1.5}
+/* language / theme switches */
+.prefs{display:flex;gap:6px;justify-content:flex-end}
+.pref{min-width:44px;min-height:36px;padding:0 10px;display:inline-flex;align-items:center;justify-content:center;font:700 12px var(--display);letter-spacing:1px;color:var(--mut);background:transparent;border:1px solid var(--line);text-decoration:none;cursor:pointer}
+.pref:hover{color:var(--fg);border-color:var(--acc)}
+/* light theme (opt-in through the switch; saved in the browser) */
+:root[data-theme="light"]{--bg:#f5f4ff;--card:#ffffff;--card2:#f0eefc;--line:#cfc7ee;--fg:#14142b;--mut:#4b5278;--acc:#6a21b5;--acc2:#6a21b5;--ok:#0d9467;color-scheme:light}
+:root[data-theme="light"] body{background:radial-gradient(90% 40% at 12% 0,rgba(138,43,226,.14),transparent 70%),linear-gradient(rgba(106,33,181,.06) 1px,transparent 1px) 0 0/20px 20px,linear-gradient(90deg,rgba(106,33,181,.06) 1px,transparent 1px) 0 0/20px 20px,var(--bg)}
+:root[data-theme="light"] .btn:hover{background:#ebe9fb}
+:root[data-theme="light"] nav.tabs a[aria-current],:root[data-theme="light"] .btn.pri{color:#fff}
