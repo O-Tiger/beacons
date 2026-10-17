@@ -1,6 +1,6 @@
 {% extends "base.html" %}{% from "_macros.html" import link, card %}
 {% block content %}
-{% call card('Quem sou') %}<ul class="plain">{% for b in p.bullets %}<li><span>{{ b|safe }}</span></li>{% endfor %}</ul>{% endcall %}
+{% call card('Quem sou') %}<ul class="plain">{% for b in p.bullets %}<li><span>{{ _(b)|safe }}</span></li>{% endfor %}</ul>{% endcall %}
 {% call card('Onde me achar') %}
 {{ link('twitch', 'Twitch', LINKS.twitch|short, LINKS.twitch, primary=True) }}
 {{ link('discord', 'Discord', 'Entrar no servidor', LINKS.discord) }}

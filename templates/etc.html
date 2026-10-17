@@ -1,8 +1,8 @@
 {% extends "base.html" %}{% from "_macros.html" import link, card %}
 {% block content %}
-{% if p.rules %}{% call card('Regras do chat') %}<ul class="plain">{% for r in p.rules %}<li><span>{{ r|safe }}</span></li>{% endfor %}</ul>{% endcall %}{% endif %}
-{% if p.commands %}{% call card('Comandos') %}<dl class="spec cmds">{% for c, d in p.commands %}<div><dt>{{ c }}</dt><dd>{{ d|safe }}</dd></div>{% endfor %}</dl>{% endcall %}{% endif %}
-{% if p.faq %}{% call card('Perguntas frequentes') %}<div class="faq">{% for q, a in p.faq %}<details><summary>{{ q }}</summary><p>{{ a|safe }}</p></details>{% endfor %}</div>{% endcall %}{% endif %}
+{% if p.rules %}{% call card('Regras do chat') %}<ul class="plain">{% for r in p.rules %}<li><span>{{ _(r)|safe }}</span></li>{% endfor %}</ul>{% endcall %}{% endif %}
+{% if p.commands %}{% call card('Comandos') %}<dl class="spec cmds">{% for c, d in p.commands %}<div><dt>{{ c }}</dt><dd>{{ _(d)|safe }}</dd></div>{% endfor %}</dl>{% endcall %}{% endif %}
+{% if p.faq %}{% call card('Perguntas frequentes') %}<div class="faq">{% for q, a in p.faq %}<details><summary>{{ _(q) }}</summary><p>{{ _(a)|safe }}</p></details>{% endfor %}</div>{% endcall %}{% endif %}
 {% call card('Canal') %}
 {{ link('chart', 'TwitchTracker', 'Estatísticas públicas de otigerjoga', LINKS.tracker, primary=True) }}
 {% endcall %}

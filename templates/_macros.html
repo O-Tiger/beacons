@@ -2,12 +2,12 @@
 {% macro link(icon, title, sub, href=None, primary=False, copy=None) -%}
 {%- set cls = 'btn pri' if primary else 'btn' -%}
 {% if copy %}
-<!--email_off--><button type="button" class="{{ cls }}" data-copy="{{ copy }}">{{ ICONS[icon] }}<span class="t"><b>{{ title }}</b><small>{{ sub }}</small></span><span class="go">Copiar</span></button><!--/email_off-->
+<!--email_off--><button type="button" class="{{ cls }}" data-copy="{{ copy }}">{{ ICONS[icon] }}<span class="t"><b>{{ _(title) }}</b><small>{{ _(sub) }}</small></span><span class="go">{{ _("Copiar") }}</span></button><!--/email_off-->
 {% else %}
-<a class="{{ cls }}" href="{{ href }}" target="_blank" rel="noopener">{{ ICONS[icon] }}<span class="t"><b>{{ title }}</b><small>{{ sub }}</small></span><span class="go">Abrir ↗</span></a>
+<a class="{{ cls }}" href="{{ href }}" target="_blank" rel="noopener">{{ ICONS[icon] }}<span class="t"><b>{{ _(title) }}</b><small>{{ _(sub) }}</small></span><span class="go">{{ _("Abrir ↗") }}</span></a>
 {% endif %}
 {%- endmacro %}
 
 {% macro card(heading) -%}
-<section class="card"><h2>{{ heading }}</h2>{{ caller() }}</section>
+<section class="card"><h2>{{ _(heading) }}</h2>{{ caller() }}</section>
 {%- endmacro %}

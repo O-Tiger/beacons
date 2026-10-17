@@ -57,3 +57,22 @@ def test_public_pages_and_the_panel_editor(client):
 def test_legacy_admin_is_gone(client):
     for path in ("/admin", "/admin/", "/admin/data"):
         assert client.get(path).status_code == 404
+
+
+def test_default_language_is_portuguese_and_english_is_optional(client):
+    html = client.get("/").get_data(as_text=True)
+    assert '<html lang="pt-BR">' in html and "Quem sou" in html and "Sobre mim" in html
+    client.set_cookie("nx_lang", "en")
+    html = client.get("/").get_data(as_text=True)
+    assert '<html lang="en">' in html and "Who I am" in html and "About me" in html and "Quem sou" not in html
+    assert "Vary" in client.get("/").headers and "Cookie" in client.get("/").headers["Vary"]
+    for path in ("/setup", "/horarios", "/contatos", "/etc"):
+        assert client.get(path).status_code == 200
+    assert "Next expected stream" in client.get("/horarios").get_data(as_text=True)
+
+
+def test_language_switch_ignores_unknown_codes_and_external_redirects(client):
+    r = client.get("/lang/xx?next=https://evil.example")
+    assert r.status_code == 302 and r.headers["Location"].endswith("/") and "Set-Cookie" not in r.headers
+    assert client.get("/lang/en?next=//evil.example").headers["Location"].endswith("/")
+    assert "nx_lang=en" in client.get("/lang/en?next=/setup").headers["Set-Cookie"]

@@ -1,16 +1,16 @@
 {% extends "base.html" %}{% from "_macros.html" import link, card %}
 {% block content %}
 <section class="card" id="sched" data-start="{{ p.start_hour }}" data-off="{{ p.off_days|join(',') }}" aria-live="polite">
-  <h2>Próxima live prevista</h2>
-  <div class="next"><b id="nx">–</b><small id="nxs">Calculado pelo horário de Brasília</small></div>
+  <h2>{{ _("Próxima live prevista") }}</h2>
+  <div class="next"><b id="nx">–</b><small id="nxs">{{ _("Calculado pelo horário de Brasília") }}</small></div>
 </section>
 {% call card('Semana') %}
 <div class="week">
   {%- for name, d in p.week %}{% set on = d not in p.off_days %}
-  <div class="day{{ '' if on else ' off' }}" data-d="{{ d }}"><span>{{ name }}</span><span>{{ (p.start_hour ~ "h →") if on else "folga" }}</span></div>
+  <div class="day{{ '' if on else ' off' }}" data-d="{{ d }}"><span>{{ _(name) }}</span><span>{{ (p.start_hour ~ "h →") if on else _("folga") }}</span></div>
   {%- endfor %}
 </div>
-<p class="note">Os horários podem mudar sem aviso. Avisos ficam na Twitch e no Discord.</p>
+<p class="note">{{ _("Os horários podem mudar sem aviso. Avisos ficam na Twitch e no Discord.") }}</p>
 {% endcall %}
 {% call card('Acompanhe') %}
 {{ link('twitch', 'Twitch', LINKS.twitch|short, LINKS.twitch, primary=True) }}

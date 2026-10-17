@@ -1,32 +1,38 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="{{ current_lang() }}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{{ p.title }} · {{ SITE.name }}</title>
-<meta name="description" content="{{ p.desc }}">
+<title>{{ _(p.title) }} · {{ SITE.name }}</title>
+<meta name="description" content="{{ _(p.desc) }}">
 <meta name="theme-color" content="#0b0719">
-<meta property="og:title" content="{{ p.title }} · {{ SITE.name }}">
-<meta property="og:description" content="{{ p.desc }}">
+<meta property="og:title" content="{{ _(p.title) }} · {{ SITE.name }}">
+<meta property="og:description" content="{{ _(p.desc) }}">
 <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
 <link rel="icon" href="{{ url_for('static', filename='favicon-32.png') }}" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="{{ url_for('static', filename='apple-touch-icon.png') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='nexus.css') }}">
+<script src="/i18n.js"></script>
+<script src="{{ url_for('static', filename='theme.js') }}"></script>
 <link rel="preload" href="{{ url_for('static', filename='fonts/chakra-petch-700.woff2') }}" as="font" type="font/woff2" crossorigin>
 </head>
 <body>
 <main class="col">
-  <nav class="tabs" aria-label="Páginas">
+  <div class="prefs">
+    <a class="pref" href="/lang/{{ 'en' if current_lang() == 'pt-BR' else 'pt-BR' }}?next={{ request.path }}" title="{{ _('Mudar idioma') }}" aria-label="{{ _('Mudar idioma') }}">{{ 'EN' if current_lang() == 'pt-BR' else 'PT' }}</a>
+    <button type="button" class="pref" id="theme-btn" title="{{ _('Alternar tema') }}" aria-label="{{ _('Alternar tema') }}">☀</button>
+  </div>
+  <nav class="tabs" aria-label="{{ _('Páginas') }}">
     {%- for pg in PAGES %}
-    <a href="{{ pg.path }}"{% if pg.endpoint == current %} aria-current="page"{% endif %}>{{ pg.label }}</a>
+    <a href="{{ pg.path }}"{% if pg.endpoint == current %} aria-current="page"{% endif %}>{{ _(pg.label) }}</a>
     {%- endfor %}
   </nav>
   <div id="view" class="in">
     <header class="hero">
       <div class="mark" aria-hidden="true"><svg viewBox="0 0 84 84" fill="none"><g class="spin"><circle cx="42" cy="42" r="38" stroke="currentColor" stroke-opacity=".45" stroke-dasharray="2 5"/><circle cx="42" cy="42" r="32" stroke="#c4b5fd" stroke-width="2" stroke-dasharray="46 16"/></g><path d="M42 20L61 31V53L42 64L23 53V31Z" stroke="currentColor" stroke-width="2" fill="currentColor" fill-opacity=".16"/>{{ GLYPHS[p.glyph] }}</svg></div>
-      <span class="tag">{{ p.tag }}</span>
-      <h1>{{ p.title }}</h1>
-      <p class="lede">{{ p.lede }}</p>
+      <span class="tag">{{ _(p.tag) }}</span>
+      <h1>{{ _(p.title) }}</h1>
+      <p class="lede">{{ _(p.lede) }}</p>
     </header>
     {% block content %}{% endblock %}
   </div>
